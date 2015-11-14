@@ -12,6 +12,10 @@ install {
     }
 }
 
+uploadArchives.repositories.mavenDeployer {
+    customizePom(pom, project)
+}
+
 def customizePom(pom, gradleProject) {
     pom.whenConfigured { generatedPom ->
         // respect 'optional' and 'provided' dependencies
