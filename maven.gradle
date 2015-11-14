@@ -12,8 +12,15 @@ install {
     }
 }
 
-uploadArchives.repositories.mavenDeployer {
-    customizePom(pom, project)
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: System.getenv("MAPR_MAVEN_REPO")) {
+                authentication(userName: System.getenv("MAPR_REPO_USER"), password: System.getenv("MAPR_REPO_PASS"))
+            }
+            customizePom(pom, project)
+        }
+    }
 }
 
 def customizePom(pom, gradleProject) {

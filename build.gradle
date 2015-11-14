@@ -203,18 +203,6 @@ artifacts {
     archives distroZip
 }
 
-uploadArchives {
-    repositories {
-        maven {
-            credentials {
-                username System.getenv("MAPR_REPO_USER")
-                password System.getenv("MAPR_REPO_PASS")
-            }
-            url System.getenv("MAPR_MAVEN_REPO")
-        }
-    }
-}
-
 task wrapper(type: Wrapper) {
     description = 'Generates gradlew[.bat] scripts'
     gradleVersion = '1.2'
